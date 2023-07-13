@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            richTextBox1 = new RichTextBox();
-            richTextBox3 = new RichTextBox();
-            richTextBox6 = new RichTextBox();
-            richTextBox4 = new RichTextBox();
-            richTextBox2 = new RichTextBox();
+            rtb0 = new RichTextBox();
+            rtb2 = new RichTextBox();
+            rtb4 = new RichTextBox();
+            rtb3 = new RichTextBox();
+            rtb1 = new RichTextBox();
             SuspendLayout();
             // 
             // label1
@@ -46,46 +46,49 @@
             label1.TabIndex = 0;
             label1.Text = "Curse of the Hills";
             // 
-            // richTextBox1
+            // rtb0
             // 
-            richTextBox1.Location = new Point(51, 79);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(681, 124);
-            richTextBox1.TabIndex = 5;
-            richTextBox1.Text = "";
+            rtb0.Location = new Point(51, 79);
+            rtb0.Name = "rtb0";
+            rtb0.Size = new Size(681, 124);
+            rtb0.TabIndex = 5;
+            rtb0.Text = "";
             // 
-            // richTextBox3
+            // rtb2
             // 
-            richTextBox3.Location = new Point(428, 233);
-            richTextBox3.Name = "richTextBox3";
-            richTextBox3.Size = new Size(304, 96);
-            richTextBox3.TabIndex = 7;
-            richTextBox3.Text = "";
+            rtb2.Location = new Point(428, 233);
+            rtb2.Name = "rtb2";
+            rtb2.Size = new Size(304, 96);
+            rtb2.TabIndex = 7;
+            rtb2.Text = "";
+            rtb2.Click += OnClick2;
             // 
-            // richTextBox6
+            // rtb4
             // 
-            richTextBox6.Location = new Point(428, 342);
-            richTextBox6.Name = "richTextBox6";
-            richTextBox6.Size = new Size(304, 96);
-            richTextBox6.TabIndex = 10;
-            richTextBox6.Text = "";
+            rtb4.Location = new Point(428, 342);
+            rtb4.Name = "rtb4";
+            rtb4.Size = new Size(304, 96);
+            rtb4.TabIndex = 10;
+            rtb4.Text = "";
+            rtb4.Click += OnClick4;
             // 
-            // richTextBox4
+            // rtb3
             // 
-            richTextBox4.Location = new Point(51, 342);
-            richTextBox4.Name = "richTextBox4";
-            richTextBox4.Size = new Size(304, 96);
-            richTextBox4.TabIndex = 11;
-            richTextBox4.Text = "";
+            rtb3.Location = new Point(51, 342);
+            rtb3.Name = "rtb3";
+            rtb3.Size = new Size(304, 96);
+            rtb3.TabIndex = 11;
+            rtb3.Text = "";
+            rtb3.Click += OnClick3;
             // 
-            // richTextBox2
+            // rtb1
             // 
-            richTextBox2.Location = new Point(51, 233);
-            richTextBox2.Name = "richTextBox2";
-            richTextBox2.Size = new Size(304, 96);
-            richTextBox2.TabIndex = 12;
-            richTextBox2.Text = "";
-            richTextBox2.Click += OnClick;
+            rtb1.Location = new Point(51, 233);
+            rtb1.Name = "rtb1";
+            rtb1.Size = new Size(304, 96);
+            rtb1.TabIndex = 12;
+            rtb1.Text = "";
+            rtb1.Click += OnClick1;
             // 
             // Form1
             // 
@@ -94,11 +97,11 @@
             BackgroundImage = Properties.Resources.fog_5137477_1280;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
-            Controls.Add(richTextBox2);
-            Controls.Add(richTextBox4);
-            Controls.Add(richTextBox6);
-            Controls.Add(richTextBox3);
-            Controls.Add(richTextBox1);
+            Controls.Add(rtb1);
+            Controls.Add(rtb3);
+            Controls.Add(rtb4);
+            Controls.Add(rtb2);
+            Controls.Add(rtb0);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "Form1";
@@ -110,10 +113,10 @@
         #endregion
 
         private Label label1;
-        private RichTextBox richTextBox1;
-        private RichTextBox richTextBox3;
-        private RichTextBox richTextBox6;
-        private RichTextBox richTextBox4;
-        private RichTextBox richTextBox2;
+        private RichTextBox rtb0;
+        private RichTextBox rtb2;
+        private RichTextBox rtb4;
+        private RichTextBox rtb3;
+        private RichTextBox rtb1;
     }
 }

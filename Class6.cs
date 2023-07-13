@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace AdventureGame
 {
-    internal class Class6
+    internal class Priester : Character
     {
+        public Priester(string name, string klasse, int leben, int dmg) : base(name, klasse, leben, dmg)
+        {
+            name = "Thurion";
+            klasse = "Priester";
+            leben = 30;
+            dmg = 5;
+        }
     }
 }

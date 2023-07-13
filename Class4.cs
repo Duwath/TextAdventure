@@ -10,6 +10,10 @@ namespace AdventureGame
     {
         public Schurke(string name, string klasse, int leben, int dmg) : base(name, klasse, leben, dmg)
         {
+            name = "Duwath";
+            klasse = "Schurke";
+            leben = 40;
+            dmg = 15;
         }
     }
 }
