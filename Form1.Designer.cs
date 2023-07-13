@@ -39,10 +39,10 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Roboto Black", 33F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Font = new Font("Microsoft Sans Serif", 33F, FontStyle.Regular, GraphicsUnit.Point);
             label1.Location = new Point(229, 9);
             label1.Name = "label1";
-            label1.Size = new Size(369, 53);
+            label1.Size = new Size(355, 52);
             label1.TabIndex = 0;
             label1.Text = "Curse of the Hills";
             // 
@@ -85,6 +85,7 @@
             richTextBox2.Size = new Size(304, 96);
             richTextBox2.TabIndex = 12;
             richTextBox2.Text = "";
+            richTextBox2.Click += onClick;
             // 
             // Form1
             // 

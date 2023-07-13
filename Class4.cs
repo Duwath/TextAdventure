@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace AdventureGame
 {
-    class Gegner : Character
+    internal class Schurke : Character
     {
-        public Gegner(string name, int health, int damage) : base(name, health, damage)
+        public Schurke(string name, string klasse, int leben, int dmg) : base(name, klasse, leben, dmg)
         {
         }
     }

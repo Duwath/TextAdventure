@@ -6,29 +6,22 @@ using System.Threading.Tasks;
 
 namespace AdventureGame
 {
-    class Character
+    public class Character
     {
-
         public string Name { get; set; }
-        public int Health { get; set; }
-        public int Damage { get; set; }
+        public string Klasse { get; set; }
+        public int Leben { get; set; }
+        public int Schaden { get; set; }
 
-        public Character(string name, int health, int dmg)
+        public Character(string name, string klasse, int hp, int dmg)
         {
             Name = name;
-            Health = health;
-            Damage = dmg;
+            Klasse = klasse;
+            Leben = hp;
+            Schaden = dmg;
         }
 
-        public virtual void Angriff(Character target)
-        {
-            Console.WriteLine($"{Name} greift {target.Name} an und verursacht {Damage} Schaden.");
-            target.Health -= Damage;
-            if (target.Health <= 0)
-            {
-                Console.WriteLine($"{target.Name} wurde besiegt!");
-            }
-        }
+
     }
 }
 
