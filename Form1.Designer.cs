@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            rtb0 = new RichTextBox();
+            rtbMain = new RichTextBox();
             rtb2 = new RichTextBox();
             rtb4 = new RichTextBox();
             rtb3 = new RichTextBox();
@@ -46,13 +46,13 @@
             label1.TabIndex = 0;
             label1.Text = "Curse of the Hills";
             // 
-            // rtb0
+            // rtbMain
             // 
-            rtb0.Location = new Point(51, 79);
-            rtb0.Name = "rtb0";
-            rtb0.Size = new Size(681, 124);
-            rtb0.TabIndex = 5;
-            rtb0.Text = "";
+            rtbMain.Location = new Point(51, 79);
+            rtbMain.Name = "rtbMain";
+            rtbMain.Size = new Size(681, 124);
+            rtbMain.TabIndex = 5;
+            rtbMain.Text = "";
             // 
             // rtb2
             // 
@@ -101,7 +101,7 @@
             Controls.Add(rtb3);
             Controls.Add(rtb4);
             Controls.Add(rtb2);
-            Controls.Add(rtb0);
+            Controls.Add(rtbMain);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "Form1";
@@ -113,7 +113,7 @@
         #endregion
 
         private Label label1;
-        private RichTextBox rtb0;
+        private RichTextBox rtbMain;
         private RichTextBox rtb2;
         private RichTextBox rtb4;
         private RichTextBox rtb3;
