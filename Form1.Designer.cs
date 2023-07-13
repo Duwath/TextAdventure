@@ -85,7 +85,7 @@
             richTextBox2.Size = new Size(304, 96);
             richTextBox2.TabIndex = 12;
             richTextBox2.Text = "";
-            richTextBox2.Click += onClick;
+            richTextBox2.Click += OnClick;
             // 
             // Form1
             // 
