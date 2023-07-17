@@ -10,6 +10,7 @@ namespace AdventureGame
         // Attribute
         List<Character> character = new List<Character>();
         List<Story> storys = new List<Story>();
+        int speicher = 0;
         public Form1()
         {
             InitializeComponent();
@@ -23,14 +24,14 @@ namespace AdventureGame
 
         }
         private void Ausgabe()
-        {
-            //string rnd = storys[1];
-            rtbMain.Text = storys[0].Stories;
-            rtb1.Text = storys[0].Answer1;
-            rtb2.Text = storys[0].Answer2;
-            rtb3.Text = storys[0].Answer3;
-            rtb4.Text = storys[0].Answer4;
+        {            
+            rtbMain.Text = storys[speicher].Stories;
+            rtb1.Text = storys[speicher].Answer1;
+            rtb2.Text = storys[speicher].Answer2;
+            rtb3.Text = storys[speicher].Answer3;
+            rtb4.Text = storys[speicher].Answer4;
         }
+        
 
         private void ImportStory()
         {
@@ -60,25 +61,30 @@ namespace AdventureGame
         }              
         private void OnClick1(object sender, EventArgs e)
         {
-            int click1 = storys[0].Option1;
-            
+            speicher = storys[speicher].Option1;
+            // Speicher hat sich geändert durch options klick, lade neuen inhalt
+            Ausgabe();
         }
 
         private void OnClick2(object sender, EventArgs e)
         {
-            int click2 = storys[0].Option2;
-
+            speicher = storys[speicher].Option2;
+            // Speicher hat sich geändert durch options klick, lade neuen inhalt
+            Ausgabe();
         }
 
         private void OnClick3(object sender, EventArgs e)
         {
-            int click3 = storys[0].Option3;
-
+            speicher = storys[speicher].Option3;
+            // Speicher hat sich geändert durch options klick, lade neuen inhalt
+            Ausgabe();
         }
 
         private void OnClick4(object sender, EventArgs e)
         {
-            int click4 = storys[0].Option4;
+            speicher = storys[speicher].Option4;
+            // Speicher hat sich geändert durch options klick, lade neuen inhalt
+            Ausgabe();
         }
 
     }

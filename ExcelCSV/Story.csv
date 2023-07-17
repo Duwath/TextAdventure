@@ -1,1 +1,5 @@
-0; Ein neues Abenteuer! Bist du bereit?;Abenteuer starten;Tutorial;Credits;Exit;1;2;3;4
+0;Willkommen bei XXX! Was möchtest du tun?;Abenteuer starten;Tutorial;Credits;Exit;1;2;3;4
+1;Ein neues Abenteuer beginnt!;Option 1;Option 1;Option 1;Option 1;2;3;4;1
+2;Was möchtest du üben?;Kampf;Vorstellung der verschiedenen Charactere;Zurück ins Hauptmenü;Beenden;0;0;0;4
+3;Alles wurde gemacht von Tom!;Zurück ins Hauptmenü;Beenden;Exit;Ende! Aus!;0;4;4;4
+4;Vielen Dank fürs Spielen! Ich hoffe du hattest Spaß!;Doch weiter spielen;Beenden;Exit;Ende! Aus!;0;4;4;4
