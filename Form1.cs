@@ -13,16 +13,29 @@ namespace AdventureGame
         public Form1()
         {
             InitializeComponent();
-            /*String Start = "Ein neues Abenteuer! Bist du bereit?";*/
-            rtbMain.SelectionLength = 0;
             
-          
+            rtbMain.SelectionLength = 0;
+
+            ImportChar();
+            ImportStory();
+
+            Ausgabe();
 
         }
+        private void Ausgabe()
+        {
+            //string rnd = storys[1];
+            rtbMain.Text = storys[0].Stories;
+            rtb1.Text = storys[0].Answer1;
+            rtb2.Text = storys[0].Answer2;
+            rtb3.Text = storys[0].Answer3;
+            rtb4.Text = storys[0].Answer4;
+        }
+
         private void ImportStory()
         {
             storys.Clear();
-            StreamReader sr = new StreamReader("..\\..\\..\\Story.csv");
+            StreamReader sr = new StreamReader("..\\..\\..\\ExcelCSV\\Story.csv");
             while (!sr.EndOfStream)
             {
                 string GesamteLine = sr.ReadLine();
@@ -31,47 +44,41 @@ namespace AdventureGame
                 storys.Add(kundeTemp);
             }
             sr.Close();
-
-            
         }
-        private string LeseFileStory()
-        {            
-            StreamReader sr = new StreamReader("../../../ExcelCSV/Story.csv");
-            
-            string GelesenerText = sr.ReadToEnd();
-
-
+        private void ImportChar()
+        {
+            storys.Clear();
+            StreamReader sr = new StreamReader("..\\..\\..\\ExcelCSV\\Character.csv");
+            while (!sr.EndOfStream)
+            {
+                string GesamteLine = sr.ReadLine();
+                string[] Splitted = GesamteLine.Split(';');
+                Character characterTemp = new Character(Splitted[0], Splitted[1],Convert.ToInt32(Splitted[2]), Convert.ToInt32(Splitted[3]));
+                character.Add(characterTemp);
+            }
             sr.Close();
-
-            return GelesenerText;
-        }
-
-        
-
-       
-
-
-
+        }              
         private void OnClick1(object sender, EventArgs e)
         {
+            int click1 = storys[0].Option1;
             
         }
 
         private void OnClick2(object sender, EventArgs e)
         {
-            
+            int click2 = storys[0].Option2;
 
         }
 
         private void OnClick3(object sender, EventArgs e)
         {
-            
+            int click3 = storys[0].Option3;
 
         }
 
         private void OnClick4(object sender, EventArgs e)
         {
-            
+            int click4 = storys[0].Option4;
         }
 
     }

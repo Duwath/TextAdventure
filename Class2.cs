@@ -20,8 +20,7 @@ namespace AdventureGame
             Leben = hp;
             Schaden = dmg;
         }
-
-
+        
     }
 }
 

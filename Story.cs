@@ -8,21 +8,18 @@ namespace AdventureGame
 {
     internal class Story
     {
-        public class Geschichte
-        {
-            public int Zeile { get; set; }
-            public string Stories { get; set; }
-            public string Answer1 { get; set; }
-            public string Answer2 { get; set; }
-            public string Answer3 { get; set; }
-            public string Answer4 { get; set; }
-            public int Option1 { get; set; }
-            public int Option2 { get; set; }
-            public int Option3 { get; set; }
-            public int Option4 { get; set; }
+        public int Zeile { get; set; }
+        public string Stories { get; set; }
+        public string Answer1 { get; set; }
+        public string Answer2 { get; set; }
+        public string Answer3 { get; set; }
+        public string Answer4 { get; set; }
+        public int Option1 { get; set; }
+        public int Option2 { get; set; }
+        public int Option3 { get; set; }
+        public int Option4 { get; set; }
 
-
-            public Geschichte(int zeile, string stories, string answer1, string answer2, string answer3, string answer4, int option1, int option2, int option3, int option4)
+        public Story(int zeile, string stories, string answer1, string answer2, string answer3, string answer4, int option1, int option2, int option3, int option4)
             {
                 Zeile = zeile;
                 Stories = stories;
@@ -48,4 +45,4 @@ namespace AdventureGame
 
         }
     }
-}
+
