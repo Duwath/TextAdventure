@@ -26,62 +26,74 @@ namespace AdventureGame
             Ausgabe();
 
         }
-        private Character ErstelleKrieger()
+        
+        private Character ErstelleChar()
         {
-            if (speicher == 5)
+            if (storys[speicher].Character == 0)
+            {
+                Character Spielcharacter = character[0];
+                return Spielcharacter;
+            }
+            else if (storys[speicher].Character == 1) 
             {
                 Character Spielcharacter = character[1];
-                return Spielcharacter;
+                return Spielcharacter;  
             }
-            else { return null; }
-        }
-        private Character ErstelleSchurke()
-        {
-            if (speicher == 6)
+            else if (storys[speicher].Character == 2)
             {
                 Character Spielcharacter = character[2];
-                return Spielcharacter;
+                return Spielcharacter;  
             }
-            else { return null; }
-        }
-        private Character ErstelleMagier()
-        {
-            if (speicher == 7)
+            else if (storys[speicher].Character == 3)
             {
                 Character Spielcharacter = character[3];
                 return Spielcharacter;
             }
-            else { return null; }
-        }
-        private Character ErstelleKleriker()
-        {
-            if (speicher == 8)
+            else if (storys[speicher].Character == 4)
             {
                 Character Spielcharacter = character[4];
                 return Spielcharacter;
             }
             else { return null; }
         }
-        private Character ErstelleTutorial()
+        private Character ErstelleGegner()
         {
-            if (speicher == 9)
+            if (storys[speicher].Gegner == 0)
             {
-                Character Spielcharacter = character[0];
+                Character Spielcharacter = enemy[0];
+                return Spielcharacter;
+            }
+            else if (storys[speicher].Gegner == 1)
+            {
+                Character Spielcharacter = enemy[1];
+                return Spielcharacter;
+            }
+            else if (storys[speicher].Gegner == 2)
+            {
+                Character Spielcharacter = enemy[2];
+                return Spielcharacter;
+            }
+            else if (storys[speicher].Gegner == 3)
+            {
+                Character Spielcharacter = enemy[3];
+                return Spielcharacter;
+            }
+            else if (storys[speicher].Gegner == 4)
+            {
+                Character Spielcharacter = enemy[4];
                 return Spielcharacter;
             }
             else { return null; }
         }
         private void Ausgabe()
         {
-            ErstelleKrieger();
-            ErstelleSchurke();
-            ErstelleMagier();
-            ErstelleKleriker();
+            ErstelleChar();
             rtbMain.Text = storys[speicher].Stories;
             rtb1.Text = storys[speicher].Answer1;
             rtb2.Text = storys[speicher].Answer2;
             rtb3.Text = storys[speicher].Answer3;
             rtb4.Text = storys[speicher].Answer4;
+            
         }
         
 
@@ -93,7 +105,7 @@ namespace AdventureGame
             {
                 string GesamteLine = sr.ReadLine();
                 string[] Splitted = GesamteLine.Split(';');
-                Story kundeTemp = new Story(Convert.ToInt32(Splitted[0]), Splitted[1], Splitted[2], Splitted[3], Splitted[4], Splitted[5], Convert.ToInt32(Splitted[6]), Convert.ToInt32(Splitted[7]), Convert.ToInt32(Splitted[8]), Convert.ToInt32(Splitted[9]));
+                Story kundeTemp = new Story(Convert.ToInt32(Splitted[0]), Splitted[1], Splitted[2], Splitted[3], Splitted[4], Splitted[5], Convert.ToInt32(Splitted[6]), Convert.ToInt32(Splitted[7]), Convert.ToInt32(Splitted[8]), Convert.ToInt32(Splitted[9]), Convert.ToInt32(Splitted[10]), Convert.ToInt32(Splitted[11]));
                 storys.Add(kundeTemp);
             }
             sr.Close();

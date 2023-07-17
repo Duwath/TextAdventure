@@ -18,8 +18,10 @@ namespace AdventureGame
         public int Option2 { get; set; }
         public int Option3 { get; set; }
         public int Option4 { get; set; }
+        public int Character { get; set; }
+        public int Gegner { get; set; }
 
-        public Story(int zeile, string stories, string answer1, string answer2, string answer3, string answer4, int option1, int option2, int option3, int option4)
+        public Story(int zeile, string stories, string answer1, string answer2, string answer3, string answer4, int option1, int option2, int option3, int option4, int character, int gegner)
             {
                 Zeile = zeile;
                 Stories = stories;
@@ -31,6 +33,8 @@ namespace AdventureGame
                 Option2 = option2;
                 Option3 = option3;
                 Option4 = option4;
+                Character = character;
+                Gegner = gegner;
             }
             public int GetZeile() { return Zeile; }
             public string GetStories() {  return Stories; }
@@ -42,6 +46,8 @@ namespace AdventureGame
             public int GetOption2() { return Option2; }
             public int GetOption3() { return Option3; }
             public int GetOption4() { return Option4; }
+            public int GetCharacter() { return Character; }
+            public int GetGegner() {  return Gegner; }
 
         }
     }
