@@ -1,5 +1,5 @@
-0;Willkommen bei XXX! Was möchtest du tun?;Abenteuer starten;Tutorial;Credits;Exit;1;2;3;4
-1;Ein neues Abenteuer beginnt!;Option 1;Option 1;Option 1;Option 1;2;3;4;1
-2;Was möchtest du üben?;Kampf;Vorstellung der verschiedenen Charactere;Zurück ins Hauptmenü;Beenden;0;0;0;4
-3;Alles wurde gemacht von Tom!;Zurück ins Hauptmenü;Beenden;Exit;Ende! Aus!;0;4;4;4
-4;Vielen Dank fürs Spielen! Ich hoffe du hattest Spaß!;Doch weiter spielen;Beenden;Exit;Ende! Aus!;0;4;4;4
+0;Willkommen bei XXX! Was mÃ¶chtest du tun?;Abenteuer starten;Tutorial;Credits;Exit;1;2;3;4
+1;Du erwachst verwirrt im Schatten einer großen Tanne. Dir dröhnt der Schädel aber oberflächlich scheinst du unversehrt! Du schaust an dir herab. Was siehst du?;Große Muskeln und ein Breitschwert an deinem Gürtel. (Krieger);Einen langen Mantel und einige Dolche am Gürtel. (Schurke);Eine Spitzhut liegt neben dir und neben dir liegt ein langer Stab mit einem rot leuchtenden Rubin an der Spitze. (Magier);Abgesehen von einer abgewetzten Robe liegt nurnoch ein großes Gebetsbuch und ein Knüppel neben dir im Gras. (Kleriker);2;3;4;1
+2;Was mÃ¶chtest du Ã¼ben?;Kampf;Vorstellung der verschiedenen Charactere;ZurÃ¼ck ins HauptmenÃ¼;Beenden;0;0;0;4
+3;Alles wurde gemacht von Tom!;ZurÃ¼ck ins HauptmenÃ¼;Beenden;Exit;Ende! Aus!;0;4;4;4
+4;Vielen Dank fÃ¼rs Spielen! Ich hoffe du hattest SpaÃŸ!;Doch weiter spielen;Beenden;Exit;Ende! Aus!;0;4;4;4

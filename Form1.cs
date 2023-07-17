@@ -10,6 +10,7 @@ namespace AdventureGame
         // Attribute
         List<Character> character = new List<Character>();
         List<Story> storys = new List<Story>();
+        List<Character> enemy = new List<Character>(); 
         int speicher = 0;
         public Form1()
         {
@@ -21,6 +22,10 @@ namespace AdventureGame
             ImportStory();
 
             Ausgabe();
+
+        }
+        private void Fight()
+        {
 
         }
         private void Ausgabe()
@@ -58,7 +63,20 @@ namespace AdventureGame
                 character.Add(characterTemp);
             }
             sr.Close();
-        }              
+        }
+        private void ImportEnemy()
+        {
+            storys.Clear();
+            StreamReader sr = new StreamReader("..\\..\\..\\ExcelCSV\\Gegner.csv");
+            while (!sr.EndOfStream)
+            {
+                string GesamteLine = sr.ReadLine();
+                string[] Splitted = GesamteLine.Split(';');
+                Character characterTemp = new Character(Splitted[0], Splitted[1], Convert.ToInt32(Splitted[2]), Convert.ToInt32(Splitted[3]));
+                enemy.Add(characterTemp);
+            }
+            sr.Close();
+        }
         private void OnClick1(object sender, EventArgs e)
         {
             speicher = storys[speicher].Option1;
