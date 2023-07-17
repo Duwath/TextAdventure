@@ -12,6 +12,8 @@ namespace AdventureGame
         List<Story> storys = new List<Story>();
         List<Character> enemy = new List<Character>(); 
         int speicher = 0;
+        int blödsinn = 0;
+        Character Spielcharacter;
         public Form1()
         {
             InitializeComponent();
@@ -24,12 +26,57 @@ namespace AdventureGame
             Ausgabe();
 
         }
-        private void Fight()
+        private Character ErstelleKrieger()
         {
-
+            if (speicher == 5)
+            {
+                Character Spielcharacter = character[1];
+                return Spielcharacter;
+            }
+            else { return null; }
+        }
+        private Character ErstelleSchurke()
+        {
+            if (speicher == 6)
+            {
+                Character Spielcharacter = character[2];
+                return Spielcharacter;
+            }
+            else { return null; }
+        }
+        private Character ErstelleMagier()
+        {
+            if (speicher == 7)
+            {
+                Character Spielcharacter = character[3];
+                return Spielcharacter;
+            }
+            else { return null; }
+        }
+        private Character ErstelleKleriker()
+        {
+            if (speicher == 8)
+            {
+                Character Spielcharacter = character[4];
+                return Spielcharacter;
+            }
+            else { return null; }
+        }
+        private Character ErstelleTutorial()
+        {
+            if (speicher == 9)
+            {
+                Character Spielcharacter = character[0];
+                return Spielcharacter;
+            }
+            else { return null; }
         }
         private void Ausgabe()
-        {            
+        {
+            ErstelleKrieger();
+            ErstelleSchurke();
+            ErstelleMagier();
+            ErstelleKleriker();
             rtbMain.Text = storys[speicher].Stories;
             rtb1.Text = storys[speicher].Answer1;
             rtb2.Text = storys[speicher].Answer2;
