@@ -1,31 +1,44 @@
 using System.Windows.Forms;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace AdventureGame
 {
     public partial class Form1 : Form
     {
+        // Attribute
+        List<Character> character = new List<Character>();
+        List<Story> storys = new List<Story>();
         public Form1()
         {
             InitializeComponent();
             /*String Start = "Ein neues Abenteuer! Bist du bereit?";*/
             rtbMain.SelectionLength = 0;
             
-            rtbMain.SelectedText = UmbauenStory();
-            rtb1.SelectedText = UmbauenTB1();
-            rtb2.SelectedText = UmbauenTB2();
-            rtb3.SelectedText = UmbauenTB3();
-            rtb4.SelectedText = UmbauenTB4();
+          
 
         }
-
-        private string LeseFile()
+        private void ImportStory()
         {
-            int Choice;
+            storys.Clear();
+            StreamReader sr = new StreamReader("..\\..\\..\\Story.csv");
+            while (!sr.EndOfStream)
+            {
+                string GesamteLine = sr.ReadLine();
+                string[] Splitted = GesamteLine.Split(';');
+                Story kundeTemp = new Story(Convert.ToInt32(Splitted[0]), Splitted[1], Splitted[2], Splitted[3], Splitted[4], Splitted[5], Convert.ToInt32(Splitted[6]), Convert.ToInt32(Splitted[7]), Convert.ToInt32(Splitted[8]), Convert.ToInt32(Splitted[9]));
+                storys.Add(kundeTemp);
+            }
+            sr.Close();
+
+            
+        }
+        private string LeseFileStory()
+        {            
             StreamReader sr = new StreamReader("../../../ExcelCSV/Story.csv");
-            //sr.Seek(Choice, SeekOrigin.Begin);
-            string GelesenerText = sr.ReadLine();
+            
+            string GelesenerText = sr.ReadToEnd();
 
 
             sr.Close();
@@ -35,100 +48,30 @@ namespace AdventureGame
 
         
 
-        private string UmbauenStory()
+       
+
+
+
+        private void OnClick1(object sender, EventArgs e)
         {
-            string[] arrayMitStrings = LeseFile().Split(";");
-            string Story = arrayMitStrings[1];
             
-            return Story;       
         }
-        private string UmbauenTB1()
-        {           
-            string[] arrayMitStrings = LeseFile().Split(";");
-            string Text1 = arrayMitStrings[2];
 
-            return Text1;
-        }
-        private string UmbauenTB2()
-        {            
-            string[] arrayMitStrings = LeseFile().Split(";");
-            string Text2 = arrayMitStrings[3];
-
-            return Text2;
-        }
-        private string UmbauenTB3()
+        private void OnClick2(object sender, EventArgs e)
         {
-            string[] arrayMitStrings = LeseFile().Split(";");            
-            string Text3 = arrayMitStrings[4];
-
-            return Text3;
-        }
-        private string UmbauenTB4()
-        {
-            string[] arrayMitStrings = LeseFile().Split(";");
-            string Text4 = arrayMitStrings[5];
-
-            return Text4;
-        }
-        private string Choose1()
-        {
-            string[] arrayMitStrings = LeseFile().Split(";");
-            string Option1 = arrayMitStrings[6];
-
-            return Option1;
-        }
-        private string Choose2()
-        {
-            string[] arrayMitStrings = LeseFile().Split(";");
-            string Option2 = arrayMitStrings[7];
-
-            return Option2;
-        }
-        private string Choose3()
-        {
-            string[] arrayMitStrings = LeseFile().Split(";");
-            string Option3 = arrayMitStrings[8];
-
-            return Option3;
-        }
-        private string Choose4()
-        {
-            string[] arrayMitStrings = LeseFile().Split(";");
-            string Option4 = arrayMitStrings[9];
-
-            return Option4;
-        }
-
-
-
-        private int OnClick1(object sender, EventArgs e)
-        {
-            int Op = int.Parse(Choose1());
-            return Op;
-            LeseFile();
-        }
-
-        private int OnClick2(object sender, EventArgs e)
-        {
-            int Op = int.Parse(Choose1());
-            return Op;
-            LeseFile();
+            
 
         }
 
-        private int OnClick3(object sender, EventArgs e)
+        private void OnClick3(object sender, EventArgs e)
         {
-            int Op = int.Parse(Choose1());
-            return Op;
-            LeseFile();
+            
 
         }
 
-        private int OnClick4(object sender, EventArgs e)
+        private void OnClick4(object sender, EventArgs e)
         {
-            int Op = int.Parse(Choose1());
-            return Op;
-            LeseFile();
+            
         }
 
     }
