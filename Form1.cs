@@ -2,6 +2,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Drawing.Text;
 
 namespace AdventureGame
 {
@@ -10,92 +11,154 @@ namespace AdventureGame
         // Attribute
         List<Character> character = new List<Character>();
         List<Story> storys = new List<Story>();
-        List<Character> enemy = new List<Character>(); 
-        int speicher = 0;
-        int blödsinn = 0;
+        List<Character> enemy = new List<Character>();
         Character Spielcharacter;
+        Character Enemy;
+        int speicher = 0;
+        int charSpeicher = 9;
+        int blödsinn = 0;
+
         public Form1()
         {
             InitializeComponent();
-            
+
+
             rtbMain.SelectionLength = 0;
 
             ImportChar();
             ImportStory();
-
+            
             Ausgabe();
 
+
         }
-        
+        private void CharBild()
+        {
+            if (Spielcharacter == null)
+            {
+
+            }
+            else if (Spielcharacter.ID == 0)
+            {
+                pbLeft.BackgroundImage = Image.FromFile("..\\..\\..\\Resources\\warrior.png");
+            }
+            else if (Spielcharacter.ID == 1)
+            {
+                pbLeft.BackgroundImage = Image.FromFile("..\\..\\..\\Resources\\warrior.png");
+            }
+            else if (Spielcharacter.ID == 2)
+            {
+                pbLeft.BackgroundImage = Image.FromFile("..\\..\\..\\Resources\\rogue.png");
+            }
+            else if (Spielcharacter.ID == 3)
+            {
+                pbLeft.BackgroundImage = Image.FromFile("..\\..\\..\\Resources\\mage.png");
+            }
+            else if (Spielcharacter.ID == 4)
+            {
+                pbLeft.BackgroundImage = Image.FromFile("..\\..\\..\\Resources\\monk.png");
+            }
+            else { }
+        }
+        /*private void Kampf()
+        {
+            if (Gegner != null)
+            {
+                
+
+
+            }
+
+        }*/
+
         private Character ErstelleChar()
         {
             if (storys[speicher].Character == 0)
             {
                 Character Spielcharacter = character[0];
+                CharBild();
                 return Spielcharacter;
             }
-            else if (storys[speicher].Character == 1) 
+            else if (storys[speicher].Character == 1)
             {
                 Character Spielcharacter = character[1];
-                return Spielcharacter;  
+                CharBild();
+                return Spielcharacter;
             }
             else if (storys[speicher].Character == 2)
             {
                 Character Spielcharacter = character[2];
-                return Spielcharacter;  
+                CharBild();
+                return Spielcharacter;
             }
             else if (storys[speicher].Character == 3)
             {
                 Character Spielcharacter = character[3];
+                CharBild();
                 return Spielcharacter;
             }
             else if (storys[speicher].Character == 4)
             {
                 Character Spielcharacter = character[4];
+                CharBild();
                 return Spielcharacter;
             }
-            else { return null; }
+            else
+            {
+                Character Spielcharacter1 = null;
+                return Spielcharacter1;
+            }
         }
         private Character ErstelleGegner()
         {
-            if (storys[speicher].Gegner == 0)
+            if (storys[speicher].Gegner == 1)
             {
-                Character Spielcharacter = enemy[0];
-                return Spielcharacter;
-            }
-            else if (storys[speicher].Gegner == 1)
-            {
-                Character Spielcharacter = enemy[1];
-                return Spielcharacter;
+                Character Enemy = enemy[0];
+                return Enemy;
             }
             else if (storys[speicher].Gegner == 2)
             {
-                Character Spielcharacter = enemy[2];
-                return Spielcharacter;
+                Character Enemy = enemy[1];
+                return Enemy;
             }
             else if (storys[speicher].Gegner == 3)
             {
-                Character Spielcharacter = enemy[3];
-                return Spielcharacter;
+                Character Enemy = enemy[2];
+                return Enemy;
             }
             else if (storys[speicher].Gegner == 4)
             {
-                Character Spielcharacter = enemy[4];
-                return Spielcharacter;
+                Character Enemy = enemy[3];
+                return Enemy;
             }
-            else { return null; }
+            else if (storys[speicher].Gegner == 5)
+            {
+                Character Enemy = enemy[4];
+                return Enemy;
+            }
+            else
+            {
+                Character Enemy1 = null;
+                return Enemy1;
+            }
         }
         private void Ausgabe()
         {
             ErstelleChar();
+            rtbMain.SelectionAlignment = HorizontalAlignment.Center;
             rtbMain.Text = storys[speicher].Stories;
+            rtb1.SelectionAlignment = HorizontalAlignment.Center;
             rtb1.Text = storys[speicher].Answer1;
+            rtb2.SelectionAlignment = HorizontalAlignment.Center;
             rtb2.Text = storys[speicher].Answer2;
+            rtb3.SelectionAlignment = HorizontalAlignment.Center;
             rtb3.Text = storys[speicher].Answer3;
+            rtb4.SelectionAlignment = HorizontalAlignment.Center;
             rtb4.Text = storys[speicher].Answer4;
             
+
         }
-        
+
 
         private void ImportStory()
         {
@@ -118,7 +181,7 @@ namespace AdventureGame
             {
                 string GesamteLine = sr.ReadLine();
                 string[] Splitted = GesamteLine.Split(';');
-                Character characterTemp = new Character(Splitted[0], Splitted[1],Convert.ToInt32(Splitted[2]), Convert.ToInt32(Splitted[3]));
+                Character characterTemp = new Character(Splitted[0], Splitted[1], Convert.ToInt32(Splitted[2]), Convert.ToInt32(Splitted[3]), Convert.ToInt32(Splitted[4]));
                 character.Add(characterTemp);
             }
             sr.Close();
@@ -131,7 +194,7 @@ namespace AdventureGame
             {
                 string GesamteLine = sr.ReadLine();
                 string[] Splitted = GesamteLine.Split(';');
-                Character characterTemp = new Character(Splitted[0], Splitted[1], Convert.ToInt32(Splitted[2]), Convert.ToInt32(Splitted[3]));
+                Character characterTemp = new Character(Splitted[0], Splitted[1], Convert.ToInt32(Splitted[2]), Convert.ToInt32(Splitted[3]), Convert.ToInt32(Splitted[4]));
                 enemy.Add(characterTemp);
             }
             sr.Close();
@@ -139,6 +202,11 @@ namespace AdventureGame
         private void OnClick1(object sender, EventArgs e)
         {
             speicher = storys[speicher].Option1;
+            if (charSpeicher== 9)
+            {
+                charSpeicher = storys[speicher].Character;
+            }
+            charSpeicher = storys[speicher].Character;
             // Speicher hat sich geändert durch options klick, lade neuen inhalt
             Ausgabe();
         }
@@ -146,6 +214,10 @@ namespace AdventureGame
         private void OnClick2(object sender, EventArgs e)
         {
             speicher = storys[speicher].Option2;
+            if (charSpeicher == 9)
+            {
+                charSpeicher = storys[speicher].Character;
+            }
             // Speicher hat sich geändert durch options klick, lade neuen inhalt
             Ausgabe();
         }
@@ -153,6 +225,10 @@ namespace AdventureGame
         private void OnClick3(object sender, EventArgs e)
         {
             speicher = storys[speicher].Option3;
+            if (charSpeicher == 9)
+            {
+                charSpeicher = storys[speicher].Character;
+            }
             // Speicher hat sich geändert durch options klick, lade neuen inhalt
             Ausgabe();
         }
@@ -160,6 +236,10 @@ namespace AdventureGame
         private void OnClick4(object sender, EventArgs e)
         {
             speicher = storys[speicher].Option4;
+            if (charSpeicher == 9)
+            {
+                charSpeicher = storys[speicher].Character;
+            }
             // Speicher hat sich geändert durch options klick, lade neuen inhalt
             Ausgabe();
         }

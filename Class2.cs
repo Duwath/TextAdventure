@@ -12,15 +12,17 @@ namespace AdventureGame
         public string Klasse { get; set; }
         public int Leben { get; set; }
         public int Schaden { get; set; }
+        public int ID { get; set; }
 
-        public Character(string name, string klasse, int hp, int dmg)
+        public Character(string name, string klasse, int hp, int dmg, int iD)
         {
             Name = name;
             Klasse = klasse;
             Leben = hp;
             Schaden = dmg;
+            ID = iD;
         }
-        
+
     }
 }
 

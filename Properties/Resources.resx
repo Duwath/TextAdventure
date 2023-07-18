@@ -118,7 +118,25 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="fog_5137477_1280" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="Daco_4570703" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Daco_4570703.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Daco_4570703zwei" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Daco_4570703zwei.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fog-5137477_1280" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fog-5137477_1280.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="monk" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\monk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rogue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rogue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="warrior" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\warrior.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
