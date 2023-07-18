@@ -29,11 +29,7 @@ namespace AdventureGame
         }
         private void CharBild()
         {
-            if (Spielcharacter == null)
-            {
-
-            }
-            else if (charSpeicher == 0)
+            if (charSpeicher == 0)
             {
                 pbLeft.BackgroundImage = Image.FromFile("..\\..\\..\\Resources\\warrior.png");
             }
