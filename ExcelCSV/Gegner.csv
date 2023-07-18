@@ -1,1 +1,11 @@
-Tutorialork;Krieger;50;10;0
+Tutorialork;Krieger;50;10;5;1
+Wolf;Krieger;20;5;5;2
+Alphawolf;Krieger;75;10;5;2
+Goblin;Krieger;17;5;5;2
+Goblin Schamane;Kleriker;25;12;5;2
+Wegelagerer;Krieger;90;10;5;2
+Riesenschnecke;Krieger;100;0;5;3
+Ork;Krieger;100;10;5;3
+Orkbogenschütze;Schurke;100;15;5;3
+Oger;Krieger;250;20;5;3
+Dämon;Magier;200;30;5;4
