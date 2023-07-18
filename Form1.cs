@@ -163,6 +163,27 @@ namespace AdventureGame
             
 
         }
+        private void charspeichercheck()
+        {   //Hier wird gecheckt ob schon ein Character erstellt wurde
+            if (charSpeicher == 9)
+            {
+                charSpeicher = storys[speicher].Character;
+            }
+        }
+        private void enemyspeichercheck()
+        {   //Hier wird gecheckt ob Gegner im Speicher sind.
+            //und der enemyspeicher mit gegnern oder dummys gefüllt.
+            if (enemySpeicher[4] == 9)
+            {
+                
+                    enemySpeicher[4] = storys[speicher].Gegner5;
+                    enemySpeicher[3] = storys[speicher].Gegner4;
+                    enemySpeicher[2] = storys[speicher].Gegner3;
+                    enemySpeicher[1] = storys[speicher].Gegner2;
+                    enemySpeicher[0] = storys[speicher].Gegner1;
+                }
+            }
+        }
 
 
         private void ImportStory()
@@ -206,27 +227,9 @@ namespace AdventureGame
         }
         private void OnClick1(object sender, EventArgs e)
         {
-            speicher = storys[speicher].Option1;
-            if (charSpeicher == 9)
-            {
-                charSpeicher = storys[speicher].Character;
-            }
-            if (enemySpeicher[4] == 9)
-            {
-                if (storys[speicher].Gegner5== 9)
-                {
-
-                }else
-                {
-                    enemySpeicher[4] = storys[speicher].Gegner5;
-                    enemySpeicher[3] = storys[speicher].Gegner4;
-                    enemySpeicher[2] = storys[speicher].Gegner3;
-                    enemySpeicher[1] = storys[speicher].Gegner2;
-                    enemySpeicher[0] = storys[speicher].Gegner1;
-                }
-                
-            }
-
+            charspeichercheck();
+            enemyspeichercheck();
+            speicher = storys[speicher].Option1;        
             // Speicher hat sich geändert durch options klick, lade neuen inhalt
             Ausgabe();
         }
@@ -234,10 +237,8 @@ namespace AdventureGame
         private void OnClick2(object sender, EventArgs e)
         {
             speicher = storys[speicher].Option2;
-            if (charSpeicher == 9)
-            {
-                charSpeicher = storys[speicher].Character;
-            }
+            charspeichercheck();
+            enemyspeichercheck();
             // Speicher hat sich geändert durch options klick, lade neuen inhalt
             Ausgabe();
         }
@@ -245,10 +246,8 @@ namespace AdventureGame
         private void OnClick3(object sender, EventArgs e)
         {
             speicher = storys[speicher].Option3;
-            if (charSpeicher == 9)
-            {
-                charSpeicher = storys[speicher].Character;
-            }
+            charspeichercheck();
+            enemyspeichercheck();
             // Speicher hat sich geändert durch options klick, lade neuen inhalt
             Ausgabe();
         }
@@ -256,10 +255,8 @@ namespace AdventureGame
         private void OnClick4(object sender, EventArgs e)
         {
             speicher = storys[speicher].Option4;
-            if (charSpeicher == 9)
-            {
-                charSpeicher = storys[speicher].Character;
-            }
+            charspeichercheck();
+            enemyspeichercheck();
             // Speicher hat sich geändert durch options klick, lade neuen inhalt
             Ausgabe();
         }
