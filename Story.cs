@@ -3,6 +3,7 @@
     internal class Story
     {
         public int Zeile { get; set; }
+        public int Kampf { get; set; }  
         public string Stories { get; set; }
         public string Answer1 { get; set; }
         public string Answer2 { get; set; }
@@ -20,9 +21,10 @@
         public int Gegner5 { get; set; }
 
 
-        public Story(int zeile, string stories, string answer1, string answer2, string answer3, string answer4, int option1, int option2, int option3, int option4, int character, int gegner1, int gegner2,int gegner3,int gegner4,int gegner5)
+        public Story(int zeile, int kampf, string stories, string answer1, string answer2, string answer3, string answer4, int option1, int option2, int option3, int option4, int character, int gegner1, int gegner2,int gegner3,int gegner4,int gegner5)
         {
             Zeile = zeile;
+            Kampf = kampf;
             Stories = stories;
             Answer1 = answer1;
             Answer2 = answer2;
@@ -41,7 +43,8 @@
             
     }
         public int GetZeile() { return Zeile; }
-        public string GetStories() { return Stories; }
+        public int GetKampf() {  return Kampf; }      
+        public string GetStories() { return Stories; }      
         public string GetAnswer1() { return Answer1; }
         public string GetAnswer2() { return Answer2; }
         public string GetAnswer3() { return Answer3; }

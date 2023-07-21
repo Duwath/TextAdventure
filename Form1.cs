@@ -16,13 +16,9 @@ namespace AdventureGame
         public Form1()
         {
             InitializeComponent();
-
-
-            rtbMain.SelectionLength = 0;
-
+            //rtbMain.SelectionLength = 0;
             ImportChar();
             ImportStory();
-
             Ausgabe();
 
 
@@ -144,7 +140,7 @@ namespace AdventureGame
             {
                 string GesamteLine = sr.ReadLine();
                 string[] Splitted = GesamteLine.Split(';');
-                Story kundeTemp = new Story(Convert.ToInt32(Splitted[0]), Splitted[1], Splitted[2], Splitted[3], Splitted[4], Splitted[5], Convert.ToInt32(Splitted[6]), Convert.ToInt32(Splitted[7]), Convert.ToInt32(Splitted[8]), Convert.ToInt32(Splitted[9]), Convert.ToInt32(Splitted[10]), Convert.ToInt32(Splitted[11]), Convert.ToInt32(Splitted[12]), Convert.ToInt32(Splitted[13]), Convert.ToInt32(Splitted[14]), Convert.ToInt32(Splitted[15]));
+                Story kundeTemp = new Story(Convert.ToInt32(Splitted[0]), Convert.ToInt32(Splitted[1]), Splitted[2], Splitted[3], Splitted[4], Splitted[5], Splitted[6], Convert.ToInt32(Splitted[7]), Convert.ToInt32(Splitted[8]), Convert.ToInt32(Splitted[9]), Convert.ToInt32(Splitted[10]), Convert.ToInt32(Splitted[11]), Convert.ToInt32(Splitted[12]), Convert.ToInt32(Splitted[13]), Convert.ToInt32(Splitted[14]), Convert.ToInt32(Splitted[15]), Convert.ToInt32(Splitted[16]));
                 storys.Add(kundeTemp);
             }
             sr.Close();
