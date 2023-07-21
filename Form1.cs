@@ -9,14 +9,12 @@ namespace AdventureGame
         Character Spielcharacter;
         Character Enemy;
         int speicher = 0;
-        int charSpeicher = 9;
-        int blödsinn = 0;
+        int charSpeicher = 9;        
         int[] enemySpeicher = new int[5];
 
         public Form1()
         {
             InitializeComponent();
-            //rtbMain.SelectionLength = 0;
             ImportChar();
             ImportStory();
             Ausgabe();
@@ -103,7 +101,7 @@ namespace AdventureGame
             rtb3.Text = storys[speicher].Answer3;
             rtb4.SelectionAlignment = HorizontalAlignment.Center;
             rtb4.Text = storys[speicher].Answer4;
-            //ErstelleChar();
+            
 
 
         }
@@ -119,7 +117,7 @@ namespace AdventureGame
         private void enemyspeichercheck()
         {   //Hier wird gecheckt ob Gegner im Speicher sind.
             //und der enemyspeicher mit gegnern oder dummys gefüllt.
-            if (enemySpeicher[4] == 9)
+            if (enemySpeicher[0] == 9)
             {
 
                 enemySpeicher[4] = storys[speicher].Gegner5;
