@@ -16,6 +16,9 @@ namespace AdventureGame
         List<Story> storys = new List<Story>();
         List<Character> enemy = new List<Character>();
         Character Spielcharacter;
+        int opt = 0;
+        string Combatlog;
+
 
         int speicher = 0;
         int[] enemySpeicher = new int[5];
@@ -31,6 +34,43 @@ namespace AdventureGame
             enemyspeichercheck();
             Charerstellung();
             EnemyErstellung();
+            BtnErstellung();
+            CombatLoop();
+        }
+        private void CombatLoop()
+        {
+            String Combatlogtemp = Combatlog;
+
+            switch (opt)
+            {
+
+                case 1:
+                    Combatlog = Spielcharacter.Name + " greift " + enemy[enemySpeicher[0]].Name + " an und verursacht " + Spielcharacter.Schaden + " Schaden.";
+                    Combatlog = Combatlogtemp + Combatlog;
+                    rtbCombatlog.Text = Combatlog;
+
+                    break;
+                case 2:
+                    Combatlog = Spielcharacter.Name + " greift  " + enemy[enemySpeicher[0]].Name + " mit seinem Spezialangriff an und verursacht " + (Spielcharacter.Schaden * 2) + " Schaden.";
+                    Combatlog = Combatlogtemp + Combatlog;
+                    break;
+                case 3:
+                    Combatlog = Spielcharacter.Name + " heilt sich mit seiner Heilfähigkeit um " + 10 + " Leben.";
+                    Combatlog = Combatlogtemp + Combatlog;
+                    break;
+                case 4:
+                    Combatlog = Spielcharacter.Name + " verteidigt sich vor dem nächsten eingehenden Schaden.";
+                    Combatlog = Combatlogtemp + Combatlog;
+                    break;
+            }
+        }
+        private void BtnErstellung()
+        {
+            btnOp1.Text = "Einfacher Angriff\n (" + Spielcharacter.Schaden + " Dmg)";
+            btnOp2.Text = "Spezialangriff \n(" + (Spielcharacter.Schaden * 2) + " Dmg)";
+            btnOp3.Text = "Heilung \n(10 HP)";
+            btnOp4.Text = "Block \n(-10 Dmg)";
+
         }
 
 
@@ -58,7 +98,7 @@ namespace AdventureGame
         }
         private void CharStats()
         {
-            rtbCharStats.Text = "HP: " + Spielcharacter.Leben + " // Attack: " + Spielcharacter.Schaden;
+            rtbCharStats.Text = "HP: " + Spielcharacter.Leben + "\nAttack: " + Spielcharacter.Schaden;
         }
         private void CharBild()
         {
@@ -104,29 +144,29 @@ namespace AdventureGame
             switch (i)
             {
                 case 1:
-                    rtbEnemy1Stats.Text = "HP: " + enemy[enemySpeicher[0]].Leben + " // Attack: " + enemy[enemySpeicher[0]].Schaden;
+                    rtbEnemy1Stats.Text = "HP: " + enemy[enemySpeicher[0]].Leben + "\nAttack: " + enemy[enemySpeicher[0]].Schaden;
                     break;
                 case 2:
-                    tbEnemy1Name.Text = "HP: " + enemy[enemySpeicher[0]].Leben + " // Attack: " + enemy[enemySpeicher[0]].Schaden;
-                    tbEnemy2Name.Text = "HP: " + enemy[enemySpeicher[1]].Leben + " // Attack: " + enemy[enemySpeicher[1]].Schaden;
+                    tbEnemy1Name.Text = "HP: " + enemy[enemySpeicher[0]].Leben + "\nAttack: " + enemy[enemySpeicher[0]].Schaden;
+                    tbEnemy2Name.Text = "HP: " + enemy[enemySpeicher[1]].Leben + "\nAttack: " + enemy[enemySpeicher[1]].Schaden;
                     break;
                 case 3:
-                    tbEnemy1Name.Text = "HP: " + enemy[enemySpeicher[0]].Leben + " // Attack: " + enemy[enemySpeicher[0]].Schaden;
-                    tbEnemy2Name.Text = "HP: " + enemy[enemySpeicher[1]].Leben + " // Attack: " + enemy[enemySpeicher[1]].Schaden;
-                    tbEnemy3Name.Text = "HP: " + enemy[enemySpeicher[2]].Leben + " // Attack: " + enemy[enemySpeicher[2]].Schaden;
+                    tbEnemy1Name.Text = "HP: " + enemy[enemySpeicher[0]].Leben + "\nAttack: " + enemy[enemySpeicher[0]].Schaden;
+                    tbEnemy2Name.Text = "HP: " + enemy[enemySpeicher[1]].Leben + "\nAttack: " + enemy[enemySpeicher[1]].Schaden;
+                    tbEnemy3Name.Text = "HP: " + enemy[enemySpeicher[2]].Leben + "\nAttack: " + enemy[enemySpeicher[2]].Schaden;
                     break;
                 case 4:
-                    tbEnemy1Name.Text = "HP: " + enemy[enemySpeicher[0]].Leben + " // Attack: " + enemy[enemySpeicher[0]].Schaden;
-                    tbEnemy2Name.Text = "HP: " + enemy[enemySpeicher[1]].Leben + " // Attack: " + enemy[enemySpeicher[1]].Schaden;
-                    tbEnemy3Name.Text = "HP: " + enemy[enemySpeicher[2]].Leben + " // Attack: " + enemy[enemySpeicher[2]].Schaden;
-                    tbEnemy4Name.Text = "HP: " + enemy[enemySpeicher[3]].Leben + " // Attack: " + enemy[enemySpeicher[3]].Schaden;
+                    tbEnemy1Name.Text = "HP: " + enemy[enemySpeicher[0]].Leben + "\nAttack: " + enemy[enemySpeicher[0]].Schaden;
+                    tbEnemy2Name.Text = "HP: " + enemy[enemySpeicher[1]].Leben + "\nAttack: " + enemy[enemySpeicher[1]].Schaden;
+                    tbEnemy3Name.Text = "HP: " + enemy[enemySpeicher[2]].Leben + "\nAttack: " + enemy[enemySpeicher[2]].Schaden;
+                    tbEnemy4Name.Text = "HP: " + enemy[enemySpeicher[3]].Leben + "\nAttack: " + enemy[enemySpeicher[3]].Schaden;
                     break;
                 case 5:
-                    tbEnemy1Name.Text = "HP: " + enemy[enemySpeicher[0]].Leben + " // Attack: " + enemy[enemySpeicher[0]].Schaden;
-                    tbEnemy2Name.Text = "HP: " + enemy[enemySpeicher[1]].Leben + " // Attack: " + enemy[enemySpeicher[1]].Schaden;
-                    tbEnemy3Name.Text = "HP: " + enemy[enemySpeicher[2]].Leben + " // Attack: " + enemy[enemySpeicher[2]].Schaden;
-                    tbEnemy4Name.Text = "HP: " + enemy[enemySpeicher[3]].Leben + " // Attack: " + enemy[enemySpeicher[3]].Schaden;
-                    tbEnemy5Name.Text = "HP: " + enemy[enemySpeicher[4]].Leben + " // Attack: " + enemy[enemySpeicher[4]].Schaden;
+                    tbEnemy1Name.Text = "HP: " + enemy[enemySpeicher[0]].Leben + "\nAttack: " + enemy[enemySpeicher[0]].Schaden;
+                    tbEnemy2Name.Text = "HP: " + enemy[enemySpeicher[1]].Leben + "\nAttack: " + enemy[enemySpeicher[1]].Schaden;
+                    tbEnemy3Name.Text = "HP: " + enemy[enemySpeicher[2]].Leben + "\nAttack: " + enemy[enemySpeicher[2]].Schaden;
+                    tbEnemy4Name.Text = "HP: " + enemy[enemySpeicher[3]].Leben + "\nAttack: " + enemy[enemySpeicher[3]].Schaden;
+                    tbEnemy5Name.Text = "HP: " + enemy[enemySpeicher[4]].Leben + "\nAttack: " + enemy[enemySpeicher[4]].Schaden;
                     break;
                 default:
                     break;
@@ -254,6 +294,27 @@ namespace AdventureGame
             sr.Close();
         }
 
-    }
+        private void btn1Click(object sender, EventArgs e)
+        {
+            opt = 1;
 
+
+        }
+
+        private void btn2Click(object sender, EventArgs e)
+        {
+            opt = 2;
+        }
+
+        private void btn3Click(object sender, EventArgs e)
+        {
+            opt = 3;
+        }
+
+        private void btn4Click(object sender, EventArgs e)
+        {
+            opt = 4;
+        }
+    }
 }
+

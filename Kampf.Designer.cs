@@ -50,6 +50,7 @@
             rtbEnemy5Stats = new RichTextBox();
             rtbEnemy1Stats = new RichTextBox();
             rtbCharStats = new RichTextBox();
+            rtbCombatlog = new RichTextBox();
             ((System.ComponentModel.ISupportInitialize)pbEnemy1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbEnemy2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbEnemy3).BeginInit();
@@ -116,78 +117,88 @@
             // 
             btnOp1.Location = new Point(57, 288);
             btnOp1.Name = "btnOp1";
-            btnOp1.Size = new Size(75, 51);
+            btnOp1.Size = new Size(90, 51);
             btnOp1.TabIndex = 7;
             btnOp1.Text = "button1";
             btnOp1.UseVisualStyleBackColor = true;
+            btnOp1.Click += btn1Click;
             // 
             // btnOp2
             // 
-            btnOp2.Location = new Point(246, 288);
+            btnOp2.Location = new Point(225, 288);
             btnOp2.Name = "btnOp2";
-            btnOp2.Size = new Size(75, 51);
+            btnOp2.Size = new Size(91, 51);
             btnOp2.TabIndex = 8;
             btnOp2.Text = "button2";
             btnOp2.UseVisualStyleBackColor = true;
+            btnOp2.Click += btn2Click;
             // 
             // btnOp3
             // 
             btnOp3.Location = new Point(57, 364);
             btnOp3.Name = "btnOp3";
-            btnOp3.Size = new Size(75, 51);
+            btnOp3.Size = new Size(90, 51);
             btnOp3.TabIndex = 9;
             btnOp3.Text = "button3";
             btnOp3.UseVisualStyleBackColor = true;
+            btnOp3.Click += btn3Click;
             // 
             // btnOp4
             // 
-            btnOp4.Location = new Point(246, 364);
+            btnOp4.Location = new Point(225, 364);
             btnOp4.Name = "btnOp4";
-            btnOp4.Size = new Size(75, 51);
+            btnOp4.Size = new Size(91, 51);
             btnOp4.TabIndex = 10;
             btnOp4.Text = "button4";
             btnOp4.UseVisualStyleBackColor = true;
+            btnOp4.Click += btn4Click;
             // 
             // tbEnemy2Name
             // 
+            tbEnemy2Name.Font = new Font("Segoe Script", 9F, FontStyle.Regular, GraphicsUnit.Point);
             tbEnemy2Name.Location = new Point(513, 269);
             tbEnemy2Name.Name = "tbEnemy2Name";
-            tbEnemy2Name.Size = new Size(50, 23);
+            tbEnemy2Name.Size = new Size(50, 27);
             tbEnemy2Name.TabIndex = 13;
             // 
             // tbEnemy3Name
             // 
+            tbEnemy3Name.Font = new Font("Segoe Script", 9F, FontStyle.Regular, GraphicsUnit.Point);
             tbEnemy3Name.Location = new Point(569, 269);
             tbEnemy3Name.Name = "tbEnemy3Name";
-            tbEnemy3Name.Size = new Size(50, 23);
+            tbEnemy3Name.Size = new Size(50, 27);
             tbEnemy3Name.TabIndex = 14;
             // 
             // tbEnemy4Name
             // 
+            tbEnemy4Name.Font = new Font("Segoe Script", 9F, FontStyle.Regular, GraphicsUnit.Point);
             tbEnemy4Name.Location = new Point(625, 269);
             tbEnemy4Name.Name = "tbEnemy4Name";
-            tbEnemy4Name.Size = new Size(50, 23);
+            tbEnemy4Name.Size = new Size(50, 27);
             tbEnemy4Name.TabIndex = 15;
             // 
             // tbEnemy5Name
             // 
+            tbEnemy5Name.Font = new Font("Segoe Script", 9F, FontStyle.Regular, GraphicsUnit.Point);
             tbEnemy5Name.Location = new Point(681, 269);
             tbEnemy5Name.Name = "tbEnemy5Name";
-            tbEnemy5Name.Size = new Size(50, 23);
+            tbEnemy5Name.Size = new Size(50, 27);
             tbEnemy5Name.TabIndex = 16;
             // 
             // tbCharName
             // 
+            tbCharName.Font = new Font("Segoe Script", 9F, FontStyle.Regular, GraphicsUnit.Point);
             tbCharName.Location = new Point(128, 15);
             tbCharName.Name = "tbCharName";
-            tbCharName.Size = new Size(106, 23);
+            tbCharName.Size = new Size(106, 27);
             tbCharName.TabIndex = 17;
             // 
             // tbEnemy1Name
             // 
+            tbEnemy1Name.Font = new Font("Segoe Script", 9F, FontStyle.Regular, GraphicsUnit.Point);
             tbEnemy1Name.Location = new Point(569, 15);
             tbEnemy1Name.Name = "tbEnemy1Name";
-            tbEnemy1Name.Size = new Size(106, 23);
+            tbEnemy1Name.Size = new Size(106, 27);
             tbEnemy1Name.TabIndex = 18;
             // 
             // rtbEnemy2Stats
@@ -238,11 +249,20 @@
             rtbCharStats.TabIndex = 24;
             rtbCharStats.Text = "";
             // 
+            // rtbCombatlog
+            // 
+            rtbCombatlog.Location = new Point(291, 155);
+            rtbCombatlog.Name = "rtbCombatlog";
+            rtbCombatlog.Size = new Size(222, 96);
+            rtbCombatlog.TabIndex = 25;
+            rtbCombatlog.Text = "";
+            // 
             // Kampf
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(rtbCombatlog);
             Controls.Add(rtbCharStats);
             Controls.Add(rtbEnemy1Stats);
             Controls.Add(rtbEnemy5Stats);
@@ -301,5 +321,6 @@
         private RichTextBox rtbEnemy5Stats;
         private RichTextBox rtbEnemy1Stats;
         private RichTextBox rtbCharStats;
+        private RichTextBox rtbCombatlog;
     }
 }
