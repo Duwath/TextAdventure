@@ -1,5 +1,5 @@
-Tutorialchar;Krieger;50;10;0
-Hrothgar;Krieger;50;10;1
-Duwath;Streuner;40;15;2
-Alannah;Magierin;30;15;3
-Thurion;Priester;30;5;4
+Tutorialchar;Krieger;50;10;0;..\\..\\..\\Resources\\warrior.png
+Hrothgar;Krieger;50;10;1;..\\..\\..\\Resources\\warrior.png
+Duwath;Streuner;40;15;2;..\\..\\..\\Resources\\rogue.png
+Alannah;Magierin;30;15;3;..\\..\\..\\Resources\\mage.png
+Thurion;Priester;30;5;4;..\\..\\..\\Resources\\monk.png

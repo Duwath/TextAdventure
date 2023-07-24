@@ -17,10 +17,21 @@ namespace AdventureGame
             InitializeComponent();
             ImportChar();
             ImportStory();
+            ImportEnemy();
             Ausgabe();
-
-
         }
+
+        private void Kampfcheck()
+        {
+            if (storys[speicher].Kampf == 1)
+            {
+                this.Hide();
+                Kampf kampf = new Kampf(speicher, Spielcharacter, enemy);
+                kampf.ShowDialog(this);
+                this.Show();
+            }
+        }
+
         private void CharBild()
         {
             if (charSpeicher == 0)
@@ -51,8 +62,7 @@ namespace AdventureGame
         {
             if (charSpeicher == 0)
             {
-                Character Spielcharacter = character[0];
-                CharBild();
+                Character Spielcharacter = character[0];                
                 return Spielcharacter;
             }
             else if (charSpeicher == 1)
@@ -90,7 +100,7 @@ namespace AdventureGame
         
         private void Ausgabe()
         {
-            
+            Kampfcheck();
             rtbMain.SelectionAlignment = HorizontalAlignment.Center;
             rtbMain.Text = storys[speicher].Stories;
             rtb1.SelectionAlignment = HorizontalAlignment.Center;
@@ -107,17 +117,16 @@ namespace AdventureGame
         }
         private void charspeichercheck()
         {   //Hier wird gecheckt ob schon ein Character erstellt wurde
-            if (charSpeicher == 9)
-            {
+            /*if (charSpeicher == 0)
+            {*/
                 charSpeicher = storys[speicher].Character;
-                ErstelleChar();
-                
-            }
+                Spielcharacter = ErstelleChar();                
+            //}
         }
         private void enemyspeichercheck()
         {   //Hier wird gecheckt ob Gegner im Speicher sind.
             //und der enemyspeicher mit gegnern oder dummys gefüllt.
-            if (enemySpeicher[0] == 9)
+            if (storys[speicher].Kampf == 1)
             {
 
                 enemySpeicher[4] = storys[speicher].Gegner5;
@@ -151,21 +160,21 @@ namespace AdventureGame
             {
                 string GesamteLine = sr.ReadLine();
                 string[] Splitted = GesamteLine.Split(';');
-                Character characterTemp = new Character(Splitted[0], Splitted[1], Convert.ToInt32(Splitted[2]), Convert.ToInt32(Splitted[3]), Convert.ToInt32(Splitted[4]));
+                Character characterTemp = new Character(Splitted[0], Splitted[1], Convert.ToInt32(Splitted[2]), Convert.ToInt32(Splitted[3]), Convert.ToInt32(Splitted[4]), Splitted[5]);
                 character.Add(characterTemp);
             }
             sr.Close();
         }
         private void ImportEnemy()
         {
-            storys.Clear();
+            enemy.Clear();
             StreamReader sr = new StreamReader("..\\..\\..\\ExcelCSV\\Gegner.csv");
             while (!sr.EndOfStream)
             {
                 string GesamteLine = sr.ReadLine();
                 string[] Splitted = GesamteLine.Split(';');
-                Character characterTemp = new Character(Splitted[0], Splitted[1], Convert.ToInt32(Splitted[2]), Convert.ToInt32(Splitted[3]), Convert.ToInt32(Splitted[4]));
-                enemy.Add(characterTemp);
+                Character enemyTemp = new Character(Splitted[0], Splitted[1], Convert.ToInt32(Splitted[2]), Convert.ToInt32(Splitted[3]), Convert.ToInt32(Splitted[4]), Splitted[5]);
+                enemy.Add(enemyTemp);
             }
             sr.Close();
         }
