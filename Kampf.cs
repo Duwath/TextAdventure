@@ -62,16 +62,13 @@ namespace AdventureGame
                     
                     break;
                 case 2:
-                    if (enemy[0].Leben > 0)
-                    {
-                        Combatlog = Spielcharacter.Name + " greift  " + enemy[enemySpeicher[0]].Name + " mit seinem Spezialangriff an und verursacht " + (Spielcharacter.Schaden * 2) + " Schaden.\n";
-                        Combatlog = Combatlogtemp + Combatlog;
-                        rtbCombatlog.Text = Combatlog;
-                        rtbEnemy1Stats.Text = "HP: " + (enemy[enemySpeicher[0]].Leben - (Spielcharacter.Schaden * 2)) + "\nAttack: " + enemy[enemySpeicher[0]].Schaden;
-                        enemy[0].Leben = enemy[0].Leben - (Spielcharacter.Schaden*2);
-                    }
-                    else
-                    {
+                    Combatlog = Spielcharacter.Name + " greift  " + enemy[enemySpeicher[0]].Name + " mit seinem Spezialangriff an und verursacht " + (Spielcharacter.Schaden * 2) + " Schaden.\n";
+                    Combatlog = Combatlogtemp + Combatlog;
+                    rtbCombatlog.Text = Combatlog;
+                    rtbEnemy1Stats.Text = "HP: " + (enemy[enemySpeicher[0]].Leben - (Spielcharacter.Schaden * 2)) + "\nAttack: " + enemy[enemySpeicher[0]].Schaden;
+                    enemy[0].Leben = enemy[0].Leben - (Spielcharacter.Schaden * 2);
+                    if (enemy[0].Leben <= 0)
+                    {                     
                         rtbCombatlog.Text = "Du hast gewonnen!";
                         this.Close();
                     }
