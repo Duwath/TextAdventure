@@ -37,7 +37,7 @@ namespace AdventureGame
             BtnErstellung();
             CombatLoop();
         }
-        private void CombatLoop()
+        private async void CombatLoop()
         {
             String Combatlogtemp = Combatlog;
 
@@ -45,22 +45,46 @@ namespace AdventureGame
             {
 
                 case 1:
-                    Combatlog = Spielcharacter.Name + " greift " + enemy[enemySpeicher[0]].Name + " an und verursacht " + Spielcharacter.Schaden + " Schaden.";
+                    Combatlog = Spielcharacter.Name + " greift " + enemy[enemySpeicher[0]].Name + " an und verursacht " + Spielcharacter.Schaden + " Schaden.\n";
                     Combatlog = Combatlogtemp + Combatlog;
                     rtbCombatlog.Text = Combatlog;
+                    rtbEnemy1Stats.Text = "HP: " + (enemy[enemySpeicher[0]].Leben - Spielcharacter.Schaden) + "\nAttack: " + enemy[enemySpeicher[0]].Schaden;
+                    enemy[0].Leben = enemy[0].Leben - Spielcharacter.Schaden;
 
+                    if (enemy[0].Leben <= 0)
+                    {
+                        rtbCombatlog.Text = "Du hast gewonnen!";
+                        this.Close();
+
+                    }
+                    
+                        
+                    
                     break;
                 case 2:
-                    Combatlog = Spielcharacter.Name + " greift  " + enemy[enemySpeicher[0]].Name + " mit seinem Spezialangriff an und verursacht " + (Spielcharacter.Schaden * 2) + " Schaden.";
-                    Combatlog = Combatlogtemp + Combatlog;
+                    if (enemy[0].Leben > 0)
+                    {
+                        Combatlog = Spielcharacter.Name + " greift  " + enemy[enemySpeicher[0]].Name + " mit seinem Spezialangriff an und verursacht " + (Spielcharacter.Schaden * 2) + " Schaden.\n";
+                        Combatlog = Combatlogtemp + Combatlog;
+                        rtbCombatlog.Text = Combatlog;
+                        rtbEnemy1Stats.Text = "HP: " + (enemy[enemySpeicher[0]].Leben - (Spielcharacter.Schaden * 2)) + "\nAttack: " + enemy[enemySpeicher[0]].Schaden;
+                        enemy[0].Leben = enemy[0].Leben - (Spielcharacter.Schaden*2);
+                    }
+                    else
+                    {
+                        rtbCombatlog.Text = "Du hast gewonnen!";
+                        this.Close();
+                    }
                     break;
                 case 3:
                     Combatlog = Spielcharacter.Name + " heilt sich mit seiner Heilfähigkeit um " + 10 + " Leben.";
                     Combatlog = Combatlogtemp + Combatlog;
+                    rtbCombatlog.Text = Combatlog;
                     break;
                 case 4:
                     Combatlog = Spielcharacter.Name + " verteidigt sich vor dem nächsten eingehenden Schaden.";
                     Combatlog = Combatlogtemp + Combatlog;
+                    rtbCombatlog.Text = Combatlog;
                     break;
             }
         }
@@ -297,6 +321,7 @@ namespace AdventureGame
         private void btn1Click(object sender, EventArgs e)
         {
             opt = 1;
+            CombatLoop();
 
 
         }
@@ -304,16 +329,19 @@ namespace AdventureGame
         private void btn2Click(object sender, EventArgs e)
         {
             opt = 2;
+            CombatLoop();
         }
 
         private void btn3Click(object sender, EventArgs e)
         {
             opt = 3;
+            CombatLoop();
         }
 
         private void btn4Click(object sender, EventArgs e)
         {
             opt = 4;
+            CombatLoop();
         }
     }
 }
