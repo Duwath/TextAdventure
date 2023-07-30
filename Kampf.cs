@@ -18,6 +18,7 @@ namespace AdventureGame
         Character Spielcharacter;
         int opt = 0;
         string Combatlog;
+        Random random= new Random();
 
 
         int speicher = 0;
@@ -35,9 +36,9 @@ namespace AdventureGame
             Charerstellung();
             EnemyErstellung();
             BtnErstellung();
-            CombatLoop();
+            CombatLoop(random);
         }
-        private async void CombatLoop()
+        private async void CombatLoop(Random random)
         {
             String Combatlogtemp = Combatlog;
 
@@ -45,52 +46,125 @@ namespace AdventureGame
             {
 
                 case 1:
+                    
                     Combatlog = Spielcharacter.Name + " greift " + enemy[enemySpeicher[0]].Name + " an und verursacht " + Spielcharacter.Schaden + " Schaden.\n";
                     Combatlog = Combatlogtemp + Combatlog;
                     rtbCombatlog.Text = Combatlog;
+                    ScrollToBottom();
                     rtbEnemy1Stats.Text = "HP: " + (enemy[enemySpeicher[0]].Leben - Spielcharacter.Schaden) + "\nAttack: " + enemy[enemySpeicher[0]].Schaden;
                     enemy[0].Leben = enemy[0].Leben - Spielcharacter.Schaden;
 
                     if (enemy[0].Leben <= 0)
                     {
                         rtbCombatlog.Text = "Du hast gewonnen!";
+                        await Task.Delay(3000);
                         this.Close();
 
                     }
-                    
-                        
-                    
+                    await Task.Delay(1000);
+                    EnemyAttack(random);
+
+
+
                     break;
                 case 2:
+                    
                     Combatlog = Spielcharacter.Name + " greift  " + enemy[enemySpeicher[0]].Name + " mit seinem Spezialangriff an und verursacht " + (Spielcharacter.Schaden * 2) + " Schaden.\n";
                     Combatlog = Combatlogtemp + Combatlog;
                     rtbCombatlog.Text = Combatlog;
+                    ScrollToBottom();
                     rtbEnemy1Stats.Text = "HP: " + (enemy[enemySpeicher[0]].Leben - (Spielcharacter.Schaden * 2)) + "\nAttack: " + enemy[enemySpeicher[0]].Schaden;
                     enemy[0].Leben = enemy[0].Leben - (Spielcharacter.Schaden * 2);
                     if (enemy[0].Leben <= 0)
-                    {                     
+                    {
                         rtbCombatlog.Text = "Du hast gewonnen!";
+                        await Task.Delay(3000);
+                        this.Close();
+                    }
+                    await Task.Delay(1000);
+                    EnemyAttack(random);
+                    break;
+                case 3:
+                    
+                    Combatlog = Spielcharacter.Name + " heilt sich mit seiner Heilfähigkeit um " + 25 + " Leben.\n";
+                    Combatlog = Combatlogtemp + Combatlog;
+                    rtbCombatlog.Text = Combatlog;
+                    ScrollToBottom();
+                    rtbCharStats.Text = "HP: " + Spielcharacter.Leben + "\nAttack: " + Spielcharacter.Schaden;
+                    Spielcharacter.Leben = Spielcharacter.Leben +25;
+                    await Task.Delay(1000);
+                    EnemyAttack(random);
+                    break;
+                case 4:
+                    
+                    Combatlog = Spielcharacter.Name + " verteidigt sich vor dem nächsten eingehenden Schaden.\n";
+                    Combatlog = Combatlogtemp + Combatlog;
+                    rtbCombatlog.Text = Combatlog;
+                    ScrollToBottom();
+                    await Task.Delay(1000);
+                    Combatlog = enemy[0].Name + " greift an aber " + Spielcharacter.Name + " blockt den Angriff ab!\n";
+                    Combatlog = Combatlogtemp + Combatlog;
+                    rtbCombatlog.Text = Combatlog;
+                    ScrollToBottom();
+                    break;
+            }
+        }
+
+        private async void EnemyAttack(Random random)
+        {
+            int atkroll = random.Next(1, 100);
+            String Combatlogtemp = Combatlog;
+
+            switch (atkroll)
+            {
+                case >= 1 and <= 80:
+                    
+                    Combatlog = enemy[0].Name + " greift " + Spielcharacter.Name + " an und verursacht " + enemy[0].Schaden + " Schaden.\n";
+                    Combatlog = Combatlogtemp + Combatlog;
+                    rtbCombatlog.Text = Combatlog;
+                    ScrollToBottom();
+                    Spielcharacter.Leben = Spielcharacter.Leben - enemy[0].Schaden;
+                    rtbCharStats.Text = "HP: " + Spielcharacter.Leben + "\nAttack: " + Spielcharacter.Schaden;
+                    
+                    if (Spielcharacter.Leben <= 0)
+                    {
+                        rtbCombatlog.Text = "Du hast verloren!";
+                        await Task.Delay(3000);
                         this.Close();
                     }
                     break;
-                case 3:
-                    Combatlog = Spielcharacter.Name + " heilt sich mit seiner Heilfähigkeit um " + 10 + " Leben.";
+                case >= 81 and <= 100:
+                    
+                    Combatlog = enemy[0].Name + " greift  " + Spielcharacter.Name + " mit seinem Spezialangriff an und verursacht " + (enemy[0].Schaden * 2) + " Schaden.\n";
                     Combatlog = Combatlogtemp + Combatlog;
                     rtbCombatlog.Text = Combatlog;
+                    ScrollToBottom();
+                    Spielcharacter.Leben = Spielcharacter.Leben - (enemy[0].Schaden * 2);
+                    rtbCharStats.Text = "HP: " + Spielcharacter.Leben + "\nAttack: " + Spielcharacter.Schaden;
+                                     
+                    if (Spielcharacter.Leben <= 0)
+                    {
+                        rtbCombatlog.Text = "Du hast verloren!";
+                        await Task.Delay(3000);
+                        this.Close();
+                    }
                     break;
-                case 4:
-                    Combatlog = Spielcharacter.Name + " verteidigt sich vor dem nächsten eingehenden Schaden.";
-                    Combatlog = Combatlogtemp + Combatlog;
-                    rtbCombatlog.Text = Combatlog;
-                    break;
+
+
             }
+        }
+        private void ScrollToBottom()
+        {
+            rtbCombatlog.SelectionStart = rtbCombatlog.Text.Length;
+            rtbCombatlog.SelectionLength = 0;
+            rtbCombatlog.ScrollToCaret();
         }
         private void BtnErstellung()
         {
             btnOp1.Text = "Einfacher Angriff\n (" + Spielcharacter.Schaden + " Dmg)";
             btnOp2.Text = "Spezialangriff \n(" + (Spielcharacter.Schaden * 2) + " Dmg)";
-            btnOp3.Text = "Heilung \n(10 HP)";
-            btnOp4.Text = "Block \n(-10 Dmg)";
+            btnOp3.Text = "Heilung \n(25 HP)";
+            btnOp4.Text = "Block \n";
 
         }
 
@@ -318,7 +392,7 @@ namespace AdventureGame
         private void btn1Click(object sender, EventArgs e)
         {
             opt = 1;
-            CombatLoop();
+            CombatLoop(random);
 
 
         }
@@ -326,19 +400,19 @@ namespace AdventureGame
         private void btn2Click(object sender, EventArgs e)
         {
             opt = 2;
-            CombatLoop();
+            CombatLoop(random);
         }
 
         private void btn3Click(object sender, EventArgs e)
         {
             opt = 3;
-            CombatLoop();
+            CombatLoop(random);
         }
 
         private void btn4Click(object sender, EventArgs e)
         {
             opt = 4;
-            CombatLoop();
+            CombatLoop(random);
         }
     }
 }

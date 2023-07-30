@@ -61,6 +61,7 @@
             // 
             // pbEnemy1
             // 
+            pbEnemy1.BackColor = Color.Transparent;
             pbEnemy1.BackgroundImageLayout = ImageLayout.Stretch;
             pbEnemy1.Location = new Point(569, 44);
             pbEnemy1.Name = "pbEnemy1";
@@ -70,6 +71,7 @@
             // 
             // pbEnemy2
             // 
+            pbEnemy2.BackColor = Color.Transparent;
             pbEnemy2.BackgroundImageLayout = ImageLayout.Stretch;
             pbEnemy2.Location = new Point(513, 298);
             pbEnemy2.Name = "pbEnemy2";
@@ -79,6 +81,7 @@
             // 
             // pbEnemy3
             // 
+            pbEnemy3.BackColor = Color.Transparent;
             pbEnemy3.BackgroundImageLayout = ImageLayout.Stretch;
             pbEnemy3.Location = new Point(569, 298);
             pbEnemy3.Name = "pbEnemy3";
@@ -88,6 +91,7 @@
             // 
             // pbEnemy4
             // 
+            pbEnemy4.BackColor = Color.Transparent;
             pbEnemy4.BackgroundImageLayout = ImageLayout.Stretch;
             pbEnemy4.Location = new Point(625, 298);
             pbEnemy4.Name = "pbEnemy4";
@@ -97,6 +101,7 @@
             // 
             // pbEnemy5
             // 
+            pbEnemy5.BackColor = Color.Transparent;
             pbEnemy5.BackgroundImageLayout = ImageLayout.Stretch;
             pbEnemy5.Location = new Point(681, 298);
             pbEnemy5.Name = "pbEnemy5";
@@ -106,6 +111,7 @@
             // 
             // pbChar
             // 
+            pbChar.BackColor = Color.Transparent;
             pbChar.BackgroundImageLayout = ImageLayout.Stretch;
             pbChar.Location = new Point(128, 44);
             pbChar.Name = "pbChar";
@@ -261,6 +267,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.fog_5137477_1280;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
             Controls.Add(rtbCombatlog);
             Controls.Add(rtbCharStats);
