@@ -180,7 +180,7 @@ namespace AdventureGame
                     {
                         rtbCombatlog.Text = "Du hast verloren!";
                         await Task.Delay(3000);
-                        storys[speicher].Zeile = 15; 
+                        speicher = 15; 
                         this.Close();
                     }
                     break;
@@ -197,7 +197,7 @@ namespace AdventureGame
                     {
                         rtbCombatlog.Text = "Du hast verloren!";
                         await Task.Delay(3000);
-                        storys[speicher].Zeile = 15;
+                        speicher= 15;
                         this.Close();
                     }
                     break;
