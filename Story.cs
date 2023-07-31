@@ -1,6 +1,6 @@
 ﻿namespace AdventureGame
 {
-    internal class Story
+    public class Story
     {
         public int Zeile { get; set; }
         public int Kampf { get; set; }  

@@ -25,7 +25,7 @@ namespace AdventureGame
 
         int speicher = 0;
         int[] enemySpeicher = new int[5];
-        public Kampf(int speicher, Character Spielcharacter, List<Character> enemy, int[] enemyspeicher)
+        public Kampf(int speicher, Character Spielcharacter, List<Character> enemy, int[] enemyspeicher, List<Story> storys)
         {
             InitializeComponent();
 
@@ -33,6 +33,7 @@ namespace AdventureGame
             this.Spielcharacter = Spielcharacter;
             this.enemy = enemy;
             this.enemySpeicher = enemyspeicher;
+            this.storys = storys;
             ImportChar();
             ImportStory();
             //enemyspeichercheck();
@@ -179,6 +180,7 @@ namespace AdventureGame
                     {
                         rtbCombatlog.Text = "Du hast verloren!";
                         await Task.Delay(3000);
+                        storys[speicher].Zeile = 15; 
                         this.Close();
                     }
                     break;
@@ -195,6 +197,7 @@ namespace AdventureGame
                     {
                         rtbCombatlog.Text = "Du hast verloren!";
                         await Task.Delay(3000);
+                        storys[speicher].Zeile = 15;
                         this.Close();
                     }
                     break;

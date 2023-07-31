@@ -26,7 +26,7 @@ namespace AdventureGame
             if (storys[speicher].Kampf == 1)
             {
                 this.Hide();
-                Kampf kampf = new Kampf(speicher, Spielcharacter, enemy, enemySpeicher);
+                Kampf kampf = new Kampf(speicher, Spielcharacter, enemy, enemySpeicher,storys);
                 kampf.ShowDialog(this);
                 this.Show();
             }
@@ -95,11 +95,19 @@ namespace AdventureGame
                 return Spielcharacter1;
             }
         }
+        private void EndeCheck()
+        {
+            if (storys[speicher].Option1==9999)
+            {                
+                this.Close();
+            }
+        }
                 
            
         
         private void Ausgabe()
         {
+            
             Kampfcheck();
             rtbMain.SelectionAlignment = HorizontalAlignment.Center;
             rtbMain.Text = storys[speicher].Stories;
@@ -111,7 +119,7 @@ namespace AdventureGame
             rtb3.Text = storys[speicher].Answer3;
             rtb4.SelectionAlignment = HorizontalAlignment.Center;
             rtb4.Text = storys[speicher].Answer4;
-            
+            EndeCheck();
 
 
         }
