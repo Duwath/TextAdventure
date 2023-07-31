@@ -26,7 +26,7 @@ namespace AdventureGame
             if (storys[speicher].Kampf == 1)
             {
                 this.Hide();
-                Kampf kampf = new Kampf(speicher, Spielcharacter, enemy);
+                Kampf kampf = new Kampf(speicher, Spielcharacter, enemy, enemySpeicher);
                 kampf.ShowDialog(this);
                 this.Show();
             }

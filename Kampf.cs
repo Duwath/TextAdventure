@@ -19,28 +19,34 @@ namespace AdventureGame
         int opt = 0;
         string Combatlog;
         Random random= new Random();
+        int specialAtk;
+        int specialBlock;
 
 
         int speicher = 0;
         int[] enemySpeicher = new int[5];
-        public Kampf(int speicher, Character Spielcharacter, List<Character> enemy)
+        public Kampf(int speicher, Character Spielcharacter, List<Character> enemy, int[] enemyspeicher)
         {
             InitializeComponent();
 
             this.speicher = speicher;
             this.Spielcharacter = Spielcharacter;
             this.enemy = enemy;
+            this.enemySpeicher = enemyspeicher;
             ImportChar();
             ImportStory();
-            enemyspeichercheck();
+            //enemyspeichercheck();
             Charerstellung();
             EnemyErstellung();
             BtnErstellung();
+
             CombatLoop(random);
         }
+       
         private async void CombatLoop(Random random)
         {
             String Combatlogtemp = Combatlog;
+            
 
             switch (opt)
             {
@@ -52,40 +58,71 @@ namespace AdventureGame
                     rtbCombatlog.Text = Combatlog;
                     ScrollToBottom();
                     rtbEnemy1Stats.Text = "HP: " + (enemy[enemySpeicher[0]].Leben - Spielcharacter.Schaden) + "\nAttack: " + enemy[enemySpeicher[0]].Schaden;
-                    enemy[0].Leben = enemy[0].Leben - Spielcharacter.Schaden;
-
-                    if (enemy[0].Leben <= 0)
+                    enemy[enemySpeicher[0]].Leben = enemy[enemySpeicher[0]].Leben - Spielcharacter.Schaden;
+                    if (specialAtk >0|| specialAtk %3 !=0)
+                    {
+                        specialAtk=specialAtk+1;
+                    }
+                    if (specialBlock>0 || specialBlock %3 != 0)
+                    {
+                        specialBlock = specialBlock + 1;
+                    }
+                    if (enemy[enemySpeicher[0]].Leben <= 0)
                     {
                         rtbCombatlog.Text = "Du hast gewonnen!";
                         await Task.Delay(3000);
                         this.Close();
-
                     }
                     await Task.Delay(1000);
                     EnemyAttack(random);
-
-
-
                     break;
+
                 case 2:
-                    
-                    Combatlog = Spielcharacter.Name + " greift  " + enemy[enemySpeicher[0]].Name + " mit seinem Spezialangriff an und verursacht " + (Spielcharacter.Schaden * 2) + " Schaden.\n";
-                    Combatlog = Combatlogtemp + Combatlog;
-                    rtbCombatlog.Text = Combatlog;
-                    ScrollToBottom();
-                    rtbEnemy1Stats.Text = "HP: " + (enemy[enemySpeicher[0]].Leben - (Spielcharacter.Schaden * 2)) + "\nAttack: " + enemy[enemySpeicher[0]].Schaden;
-                    enemy[0].Leben = enemy[0].Leben - (Spielcharacter.Schaden * 2);
-                    if (enemy[0].Leben <= 0)
+                    if (specialAtk == 0 || specialAtk % 3 == 0)
                     {
-                        rtbCombatlog.Text = "Du hast gewonnen!";
-                        await Task.Delay(3000);
-                        this.Close();
+                        
+                        Combatlog = Spielcharacter.Name + " greift  " + enemy[enemySpeicher[0]].Name + " mit seinem Spezialangriff an und verursacht " + (Spielcharacter.Schaden * 2) + " Schaden.\n";
+                        Combatlog = Combatlogtemp + Combatlog;
+                        rtbCombatlog.Text = Combatlog;
+                        ScrollToBottom();
+                        rtbEnemy1Stats.Text = "HP: " + (enemy[enemySpeicher[0]].Leben - (Spielcharacter.Schaden * 2)) + "\nAttack: " + enemy[enemySpeicher[0]].Schaden;
+                        enemy[enemySpeicher[0]].Leben = enemy[enemySpeicher[0]].Leben - (Spielcharacter.Schaden * 2);
+                        specialAtk=specialAtk +1;
+                        if (specialBlock > 0 || specialBlock % 3 != 0)
+                        {
+                            specialBlock = specialBlock + 1;
+                        }
+
+                        if (enemy[enemySpeicher[0]].Leben <= 0)
+                        {
+                            rtbCombatlog.Text = "Du hast gewonnen!";
+                            await Task.Delay(3000);
+                            this.Close();
+                        }
+                        await Task.Delay(1000);
+                        EnemyAttack(random);
+                        break;
                     }
-                    await Task.Delay(1000);
-                    EnemyAttack(random);
+                    else if(specialAtk%3 != 0)
+                    {
+                        Combatlog = "Du kannst die Spezialattacke nur einmal alle drei Züge nutzen\n";
+                        Combatlog = Combatlogtemp + Combatlog;
+                        rtbCombatlog.Text = Combatlog;
+                        ScrollToBottom();
+                        break;
+                    }
                     break;
-                case 3:
                     
+                case 3:
+                    if (specialAtk > 0 || specialAtk % 3 != 0)
+                    {
+                        specialAtk = specialAtk + 1;
+                    }
+                    if (specialBlock > 0 || specialBlock % 3 != 0)
+                    {
+                        specialBlock = specialBlock + 1;
+                    }
+
                     Combatlog = Spielcharacter.Name + " heilt sich mit seiner Heilfähigkeit um " + 25 + " Leben.\n";
                     Combatlog = Combatlogtemp + Combatlog;
                     rtbCombatlog.Text = Combatlog;
@@ -96,16 +133,28 @@ namespace AdventureGame
                     EnemyAttack(random);
                     break;
                 case 4:
-                    
-                    Combatlog = Spielcharacter.Name + " verteidigt sich vor dem nächsten eingehenden Schaden.\n";
-                    Combatlog = Combatlogtemp + Combatlog;
-                    rtbCombatlog.Text = Combatlog;
-                    ScrollToBottom();
-                    await Task.Delay(1000);
-                    Combatlog = enemy[0].Name + " greift an aber " + Spielcharacter.Name + " blockt den Angriff ab!\n";
-                    Combatlog = Combatlogtemp + Combatlog;
-                    rtbCombatlog.Text = Combatlog;
-                    ScrollToBottom();
+                    if (specialBlock == 0 || specialBlock % 3 == 0)
+                    {
+                        Combatlog = Spielcharacter.Name + " verteidigt sich vor dem nächsten eingehenden Schaden.\n";
+                        Combatlogtemp = Combatlogtemp + Combatlog;
+                        //rtbCombatlog.Text = Combatlog;
+                        ScrollToBottom();
+                        await Task.Delay(1000);
+                        Combatlog = enemy[enemySpeicher[0]].Name + " greift an aber " + Spielcharacter.Name + " blockt den Angriff ab!\n";
+                        Combatlog = Combatlogtemp + Combatlog;
+                        rtbCombatlog.Text = Combatlog;
+                        ScrollToBottom();
+                        specialBlock = specialBlock + 1;
+                        break;
+                    }
+                    else if (specialBlock % 3 != 0)
+                    {
+                        Combatlog = "Du kannst nur einmal alle drei Züge blocken\n";
+                        Combatlog = Combatlogtemp + Combatlog;
+                        rtbCombatlog.Text = Combatlog;
+                        ScrollToBottom();
+                        break;
+                    }
                     break;
             }
         }
@@ -119,11 +168,11 @@ namespace AdventureGame
             {
                 case >= 1 and <= 80:
                     
-                    Combatlog = enemy[0].Name + " greift " + Spielcharacter.Name + " an und verursacht " + enemy[0].Schaden + " Schaden.\n";
+                    Combatlog = enemy[enemySpeicher[0]].Name + " greift " + Spielcharacter.Name + " an und verursacht " + enemy[enemySpeicher[0]].Schaden + " Schaden.\n";
                     Combatlog = Combatlogtemp + Combatlog;
                     rtbCombatlog.Text = Combatlog;
                     ScrollToBottom();
-                    Spielcharacter.Leben = Spielcharacter.Leben - enemy[0].Schaden;
+                    Spielcharacter.Leben = Spielcharacter.Leben - enemy[enemySpeicher[0]].Schaden;
                     rtbCharStats.Text = "HP: " + Spielcharacter.Leben + "\nAttack: " + Spielcharacter.Schaden;
                     
                     if (Spielcharacter.Leben <= 0)
@@ -135,11 +184,11 @@ namespace AdventureGame
                     break;
                 case >= 81 and <= 100:
                     
-                    Combatlog = enemy[0].Name + " greift  " + Spielcharacter.Name + " mit seinem Spezialangriff an und verursacht " + (enemy[0].Schaden * 2) + " Schaden.\n";
+                    Combatlog = enemy[enemySpeicher[0]].Name + " greift  " + Spielcharacter.Name + " mit seinem Spezialangriff an und verursacht " + (enemy[enemySpeicher[0]].Schaden * 2) + " Schaden.\n";
                     Combatlog = Combatlogtemp + Combatlog;
                     rtbCombatlog.Text = Combatlog;
                     ScrollToBottom();
-                    Spielcharacter.Leben = Spielcharacter.Leben - (enemy[0].Schaden * 2);
+                    Spielcharacter.Leben = Spielcharacter.Leben - (enemy[enemySpeicher[0]].Schaden * 2);
                     rtbCharStats.Text = "HP: " + Spielcharacter.Leben + "\nAttack: " + Spielcharacter.Schaden;
                                      
                     if (Spielcharacter.Leben <= 0)
@@ -155,12 +204,14 @@ namespace AdventureGame
         }
         private void ScrollToBottom()
         {
+            //Die Combatlog Länge wird ermittelt und die Auswahllänge festgelegt. AKA er schaut wie lang das Log ist und skippt ans Ende
             rtbCombatlog.SelectionStart = rtbCombatlog.Text.Length;
             rtbCombatlog.SelectionLength = 0;
             rtbCombatlog.ScrollToCaret();
         }
         private void BtnErstellung()
         {
+            //Hier werden die Buttons mit Inhalt gefüllt.
             btnOp1.Text = "Einfacher Angriff\n (" + Spielcharacter.Schaden + " Dmg)";
             btnOp2.Text = "Spezialangriff \n(" + (Spielcharacter.Schaden * 2) + " Dmg)";
             btnOp3.Text = "Heilung \n(25 HP)";
@@ -169,7 +220,7 @@ namespace AdventureGame
         }
 
 
-        private void enemyspeichercheck()
+        /*private void enemyspeichercheck()
         {   //Hier wird gecheckt ob Gegner im Speicher sind.
             //und der enemyspeicher mit gegnern oder dummys gefüllt.
             if (storys[speicher].Kampf == 1)
@@ -180,7 +231,7 @@ namespace AdventureGame
                 enemySpeicher[1] = storys[speicher].Gegner2;
                 enemySpeicher[0] = storys[speicher].Gegner1;
             }
-        }
+        }*/
         private void Charerstellung()
         {
             CharName();
@@ -197,6 +248,7 @@ namespace AdventureGame
         }
         private void CharBild()
         {
+            //Je nachdem welcher Char hier vorhanden ist wird das passende Bild ausgewählt.
             if (storys[speicher].Character == 0)
             {
                 pbChar.BackgroundImage = Image.FromFile(Spielcharacter.Pfad);
